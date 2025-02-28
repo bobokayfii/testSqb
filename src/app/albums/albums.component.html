@@ -1,0 +1,34 @@
+<div class="filters-container">
+  <!-- Поиск -->
+  <mat-form-field appearance="outline">
+    <mat-label>Поиск по пользователю</mat-label>
+    <input matInput (keyup)="applySearchFilter($event)" placeholder="Введите User ID" />
+  </mat-form-field>
+
+  <!-- Фильтр -->
+  <mat-form-field appearance="outline">
+    <mat-label>Фильтр по пользователю</mat-label>
+    <mat-select [(value)]="selectedUser" (selectionChange)="applySelectFilter()">
+      <mat-option [value]="null">Все пользователи</mat-option>
+      <mat-option *ngFor="let user of users" [value]="user">User {{ user }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<!-- Карточки альбомов -->
+<div class="album-list">
+  <mat-card *ngFor="let user of displayedUsers" class="album-card" (click)="goToUserAlbums(user)">
+    <mat-card-header>
+      <mat-card-title>User {{ user }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ getAlbumTitles(user) }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- Пагинация -->
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 25]"
+  showFirstLastButtons
+></mat-paginator>

@@ -1,0 +1,17 @@
+<div class="back-button">
+  <button mat-button color="primary" (click)="goBack()">← Назад</button>
+</div>
+<div class="user-details-container" *ngIf="user">
+  <h2>{{ user.name }} {{ user.username }})</h2>
+  <p>Email: {{ user.email }}</p>
+  <p>Phone: {{ user.phone }}</p>
+  <p>Website: <a href="http://{{ user.website }}" target="_blank">{{ user.website }}</a></p>
+
+  <h3>Address</h3>
+  <p>{{ user.address.street }}, {{ user.address.suite }}</p>
+  <p>{{ user.address.city }}, {{ user.address.zipcode }}</p>
+
+  <h3>Company</h3>
+  <p>{{ user.company.name }}</p>
+  <p><em>{{ user.company.catchPhrase }}</em></p>
+</div>

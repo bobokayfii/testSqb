@@ -1,0 +1,37 @@
+table {
+  width: 100%;
+  tr {
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05); // Светло-серый цвет при наведении
+    }
+  }
+}
+
+.mat-form-field {
+  width: 250px;
+  margin-right: 16px;
+}
+
+.filters-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.row-hover:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.mat-elevation-z8 {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mat-paginator {
+  margin-top: 16px;
+}

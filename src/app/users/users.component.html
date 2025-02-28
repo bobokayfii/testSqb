@@ -1,0 +1,9 @@
+<div class="users-container">
+  <h2>Users List</h2>
+  <div *ngFor="let user of users" class="user-card" (click)="goToUserDetails(user.id)">
+    <h3>{{ user.name }} {{ user.username }})</h3>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone: {{ user.phone }}</p>
+    <p>Website: <a href="http://{{ user.website }}" target="_blank">{{ user.website }}</a></p>
+  </div>
+</div>

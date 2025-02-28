@@ -1,0 +1,34 @@
+<div class="filters-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Поиск по альбому</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Введите Album ID" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Фильтр по альбому</mat-label>
+    <mat-select [(value)]="selectedAlbum" (selectionChange)="filterByAlbum()">
+      <mat-option *ngFor="let album of albums" [value]="album">Album {{ album }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="photo-list">
+  <mat-card *ngFor="let photo of displayedPhotos" class="photo-card" (click)="goToAlbumPhotos(photo.id)">
+    <mat-card-header>
+      <mat-card-title>Photo ID {{ photo.id }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <img [src]="photo.thumbnailUrl" alt="Photo" />
+      <p>{{photo.id}}</p>
+      <p>{{photo.title}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-paginator
+  [length]="photos.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[100, 200, 500]"
+  showFirstLastButtons
+  (page)="handlePageEvent($event)"
+></mat-paginator>

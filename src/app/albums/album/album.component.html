@@ -1,0 +1,16 @@
+<mat-card class="album-container">
+  <mat-card-title>Альбомы пользователя {{ userId }}</mat-card-title>
+
+  <div class="album-grid">
+    <mat-card *ngFor="let album of albums" class="album-card">
+      <mat-card-header>
+        <mat-card-title>{{ album.title }}</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</mat-card>
+
+<div class="back-button">
+  <button mat-button color="primary" (click)="goBack()">← Назад</button>
+</div>
+

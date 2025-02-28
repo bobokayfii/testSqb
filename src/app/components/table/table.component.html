@@ -1,0 +1,41 @@
+<div class="filters-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Поиск по пользователю</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Введите User ID" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Фильтр по пользователю</mat-label>
+    <mat-select [(value)]="selectedUser" (selectionChange)="filterByUser()">
+      <mat-option *ngFor="let user of users" [value]="user">User {{ user }}</mat-option>
+      <mat-option [value]="''">Все</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="user">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>User</th>
+    <td mat-cell *matCellDef="let element">User {{ element.userId }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+    <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+      [routerLink]="['/posts', row.id]"
+      class="row-hover">
+  </tr>
+
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
