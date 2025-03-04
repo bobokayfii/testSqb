@@ -39,7 +39,7 @@ export class TableComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<Post>([]);
   users: number[] = [];
   selectedUser: number | '' = '';
-  originalData: Post[] = []; // Исходный список данных
+  originalData: Post[] = []; 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -49,8 +49,8 @@ export class TableComponent implements AfterViewInit {
   ngOnInit() {
     this.services.getPosts().subscribe((data) => {
       this.dataSource.data = data;
-      this.originalData = data; // Сохраняем оригинальные данные
-      this.users = [...new Set(data.map((post) => post.userId))]; // Уникальные userId
+      this.originalData = data; 
+      this.users = [...new Set(data.map((post) => post.userId))]; 
     });
   }
 
